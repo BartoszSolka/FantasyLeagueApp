@@ -1,6 +1,7 @@
 package com.fantasy.domain;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,12 +15,13 @@ public class Club {
     @GeneratedValue
     private Long id;
 
+    @NotBlank
     private String name;
 
     @OneToOne
     private Photo logo;
 
-    @OneToMany
+    @OneToMany(mappedBy = "club")
     private List<Player> players = new ArrayList<>();
 
     @ManyToMany
