@@ -1,5 +1,6 @@
 package com.fantasy.domain;
 
+import com.fantasy.enums.Role;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,9 +22,12 @@ public class User {
     @NotNull
     private String password;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @NotNull
-    private Team fantasyTeam;
+    private Team fantasyTeam = new Team();
 
     private Integer money;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }

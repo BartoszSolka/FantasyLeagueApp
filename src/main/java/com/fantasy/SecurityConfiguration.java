@@ -54,27 +54,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable();
-//                .formLogin()
-//                .loginPage("/login")
-//                .defaultSuccessUrl("/")
-//                .failureUrl("/login?error")
-//                .usernameParameter("username")
-//                .passwordParameter("password")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .logoutSuccessUrl("/login")
-//                .permitAll()
-//                .and()
-//                .rememberMe()
-//                .rememberMeParameter("remember-me")
-//                .tokenValiditySeconds(2 * 24 * 60 * 60) //2 days
-//                .key("uniqueKey")
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/isAlive", "is-alive", "/login").permitAll()
-//                .anyRequest().authenticated();
+         http
+                .csrf().disable()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/")
+                .failureUrl("/login?error")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login")
+                .permitAll()
+                .and()
+                .rememberMe()
+                .rememberMeParameter("remember-me")
+                .tokenValiditySeconds(2 * 24 * 60 * 60) //2 days
+                .key("uniqueKey")
+                .and()
+                .authorizeRequests()
+                .antMatchers("/isAlive", "is-alive", "/login", "/register").permitAll()
+                .anyRequest().authenticated();
     }
 }
