@@ -1,6 +1,7 @@
 package com.fantasy.controller;
 
-import com.fantasy.ClubDto;
+import com.fantasy.domain.Player;
+import com.fantasy.dto.ClubDto;
 import com.fantasy.domain.Club;
 import com.fantasy.service.ClubService;
 import lombok.RequiredArgsConstructor;
@@ -29,5 +30,10 @@ public class ClubController {
     @PostMapping
     public Club addClub(@RequestBody ClubDto clubDto) {
         return clubService.addClub(clubDto);
+    }
+
+    @PutMapping("/{id}")
+    public Club editClub(@PathVariable("id")Club club, @RequestBody ClubDto clubDto) {
+        return clubService.editClub(club, clubDto);
     }
 }

@@ -1,4 +1,4 @@
-package com.fantasy;
+package com.fantasy.dto;
 
 import com.fantasy.domain.Photo;
 import lombok.Data;

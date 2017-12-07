@@ -26,9 +26,9 @@ public class Player {
     @ManyToOne
     private Club club;
 
-    private Integer shirtNumber;
+    private int shirtNumber;
 
-    private Integer price;
+    private int price;
 
-    private boolean captain;
+    private int points;
 }

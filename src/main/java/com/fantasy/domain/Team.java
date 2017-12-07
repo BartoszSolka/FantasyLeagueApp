@@ -20,5 +20,8 @@ public class Team {
     @ManyToMany
     private List<Player> players = new ArrayList<>();
 
-    private Integer points;
+    @OneToOne
+    private Player captain;
+
+    private int points;
 }
