@@ -21,9 +21,16 @@ public class Club {
     @OneToOne
     private Photo logo;
 
-    @OneToMany(mappedBy = "club")
+    @OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
     private List<Player> players = new ArrayList<>();
 
     @ManyToMany
     private List<Match> matches = new ArrayList<>();
+
+    public Club() {
+    }
+
+    public Club(String name) {
+        this.name = name;
+    }
 }

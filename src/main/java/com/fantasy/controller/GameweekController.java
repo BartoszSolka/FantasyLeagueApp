@@ -40,4 +40,9 @@ public class GameweekController {
     public Gameweek editGameweek(@PathVariable Gameweek gameweek, @RequestBody List<CreateMatchDto> matches) {
         return gameweekService.editGameweek(gameweek, matches);
     }
+
+    @PutMapping("/{id}/current")
+    public Gameweek setGameweekAsCurrent(@PathVariable Gameweek gameweek) {
+        return gameweekService.setGameweekAsCurrent(gameweek);
+    }
 }

@@ -16,4 +16,6 @@ public class Gameweek {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Match> matches = new ArrayList<>();
+
+    private boolean current;
 }

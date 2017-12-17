@@ -26,7 +26,9 @@ public class User {
     @NotNull
     private Team fantasyTeam = new Team();
 
-    private Integer money;
+    private Integer money = 1000000;
+
+    private Integer points;
 
     @Enumerated(EnumType.STRING)
     private Role role;

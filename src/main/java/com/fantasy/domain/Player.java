@@ -31,4 +31,15 @@ public class Player {
     private int price;
 
     private int points;
+
+    public Player() {
+    }
+
+    public Player(String name, String surname, Position position, Club club, int shirtNumber) {
+        this.name = name;
+        this.surname = surname;
+        this.position = position;
+        this.club = club;
+        this.shirtNumber = shirtNumber;
+    }
 }

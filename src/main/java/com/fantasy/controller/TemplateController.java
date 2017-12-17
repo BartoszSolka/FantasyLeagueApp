@@ -1,6 +1,9 @@
 package com.fantasy.controller;
 
+import com.fantasy.domain.User;
 import com.fantasy.dto.LoginDto;
+import com.fantasy.enums.Role;
+import com.fantasy.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,8 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class TemplateController {
 
+    private final UserService userService;
+
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("login", new LoginDto());
@@ -21,6 +26,10 @@ public class TemplateController {
 
     @GetMapping("/")
     public String index() {
+        User user = userService.readCurrent();
+        if (Role.ADMIN.equals(user.getRole())) {
+            return "/admin";
+        }
         return "/index";
     }
 }
