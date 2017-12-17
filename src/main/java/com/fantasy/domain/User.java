@@ -28,7 +28,7 @@ public class User {
 
     private Integer money = 1000000;
 
-    private Integer points;
+    private int points;
 
     @Enumerated(EnumType.STRING)
     private Role role;

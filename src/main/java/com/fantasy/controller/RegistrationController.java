@@ -1,6 +1,5 @@
 package com.fantasy.controller;
 
-import com.fantasy.domain.User;
 import com.fantasy.dto.LoginDto;
 import com.fantasy.service.UserService;
 import lombok.RequiredArgsConstructor;

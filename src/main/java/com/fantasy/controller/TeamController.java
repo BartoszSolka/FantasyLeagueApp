@@ -1,6 +1,5 @@
 package com.fantasy.controller;
 
-import com.fantasy.domain.Club;
 import com.fantasy.domain.Player;
 import com.fantasy.domain.Team;
 import com.fantasy.service.TeamService;
@@ -27,7 +26,7 @@ public class TeamController {
         return teamService.getTeams(pageable);
     }
 
-    @PostMapping
+    @PostMapping("/{teamId}/add-player")
     public Team addPlayerToTeam(@PathVariable("teamId") Team team, @RequestBody Long playerId) {
         return teamService.addPlayerToTeam(team, playerId);
     }

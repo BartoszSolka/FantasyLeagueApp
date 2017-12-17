@@ -27,7 +27,7 @@ public class GoalController {
     }
 
     @PostMapping
-    public Goal addGoal(@RequestBody  GoalDto goalDto) {
+    public Goal addGoal(@RequestBody GoalDto goalDto) {
         return goalService.addGoal(goalDto);
     }
 
