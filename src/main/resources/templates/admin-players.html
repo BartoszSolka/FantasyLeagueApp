@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorator="admin-layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<section layout:fragment="content" id="app">
+    <div class="col-md-12">
+        <h2 class="text-center">Lista zawodników</h2>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <tr class="text-center">
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Punkty</th>
+            <th>Szczegóły</th>
+        </tr>
+        <tr v-for="player in players">
+            <td>{{player.name}}</td>
+            <td>{{player.surname || '-'}}</td>
+            <td>{{player.points}}</td>
+            <td><a :href="playerIdLink(player)">Szczegóły</a></td>
+        </tr>
+    </table>
+</section>
+
+<section layout:fragment="ext-footer-scripts">
+    <script src="/js/admin/admin-players.js"></script>
+</section>
+</body>
+</html>

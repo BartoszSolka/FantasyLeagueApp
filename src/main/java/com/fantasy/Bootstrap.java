@@ -1,8 +1,6 @@
 package com.fantasy;
 
-import com.fantasy.domain.Club;
-import com.fantasy.domain.Player;
-import com.fantasy.domain.User;
+import com.fantasy.domain.*;
 import com.fantasy.enums.Position;
 import com.fantasy.enums.Role;
 import com.fantasy.repository.*;
@@ -85,6 +83,19 @@ public class Bootstrap implements ApplicationRunner {
         Club club = new Club();
         club.setName("Manchester City");
         club = clubRepository.save(club);
+
+        Club club2 = new Club();
+        club2.setName("Liverpool");
+        club2 = clubRepository.save(club2);
+
+        Match match = new Match();
+        match.setHome(club);
+        match.setVisitor(club2);
+
+        Gameweek gameweek = new Gameweek();
+        gameweek.setCurrent(true);
+        gameweek.getMatches().add(match);
+        gameweekRepository.save(gameweek);
 
         List<Player> players = new ArrayList<>();
         players.addAll(createPlayers());

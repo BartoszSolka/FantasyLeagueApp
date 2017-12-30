@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorator="admin-layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<section layout:fragment="content" id="app">
+    <div class="col-md-12">
+        <h2 class="text-center">Lista klubów</h2>
+        <a class="col-md-3 col-md-offset-9" href="/admin-add-club"><button class="btn btn-default">Dodaj klub</button></a>
+    </div>
+
+    <div class="col-md-12">
+        <h2></h2>
+    </div>
+    <table class="table table-bordered table-striped">
+        <tr class="text-center">
+            <th>Nazwa</th>
+            <th>Szczegóły</th>
+        </tr>
+        <tr v-for="club in clubs">
+            <td>{{club.name}}</td>
+            <td><a :href="clubIdLink(club)">Szczegóły</a></td>
+        </tr>
+    </table>
+</section>
+
+<section layout:fragment="ext-footer-scripts">
+    <script src="/js/admin/admin-clubs.js"></script>
+</section>
+</body>
+</html>

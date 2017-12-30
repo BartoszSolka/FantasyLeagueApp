@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorator="admin-layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<section layout:fragment="content" id="app">
+    <div class="col-md-12">
+        <h2 class="text-center">Lista użytkowników</h2>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <tr class="text-center">
+            <th>Imię</th>
+            <th>Czy Administrator</th>
+            <th>Punkty</th>
+        </tr>
+        <tr v-for="user in users">
+            <td>{{user.username}}</td>
+            <td>{{user.role == 'ADMIN' ? 'Tak' : 'Nie'}}</td>
+            <td>{{user.points}}</td>
+        </tr>
+    </table>
+</section>
+
+<section layout:fragment="ext-footer-scripts">
+    <script src="/js/admin/admin-users.js"></script>
+</section>
+</body>
+</html>

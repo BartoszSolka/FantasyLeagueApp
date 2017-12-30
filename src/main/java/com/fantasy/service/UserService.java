@@ -7,6 +7,8 @@ import com.fantasy.enums.Role;
 import com.fantasy.repository.TeamRepository;
 import com.fantasy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,5 +39,12 @@ public class UserService {
     public User readCurrent() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return userRepository.findByUsername(auth.getName()).orElse(null);
+    }
+
+    public User getUser(Long id) {
+        return userRepository.findOne(id);
+    }
+    public Page<User> getUsers(Pageable pageable) {
+        return userRepository.findAll(pageable);
     }
 }

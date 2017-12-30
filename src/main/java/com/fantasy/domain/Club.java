@@ -1,5 +1,6 @@
 package com.fantasy.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -22,6 +23,7 @@ public class Club {
     private Photo logo;
 
     @OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Player> players = new ArrayList<>();
 
     @ManyToMany

@@ -25,4 +25,6 @@ public class Match {
 
     @OneToMany(mappedBy = "match")
     private List<Goal> visitorGoals = new ArrayList<>();
+
+    private boolean started;
 }

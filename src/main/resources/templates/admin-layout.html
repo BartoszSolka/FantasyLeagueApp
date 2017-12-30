@@ -13,10 +13,10 @@
 <section layout:fragment="header" id="header">
     <nav class="navbar navbar-default">
         <div class="nav navbar-nav">
-            <a class="navbar-brand" th:href="@{/}">Panel administratora</a>
-            <li><a th:href="@{/results}">Zobacz wyniki</a></li>
-            <li><a th:href="@{/team}">Moja drużyna</a></li>
-            <li><a th:href="#{/player}">Znajdź piłkarza</a></li>
+            <li><a th:href="@{/admin-gameweeks}">Zarządzaj kolejkami</a></li>
+            <li><a th:href="@{/admin-clubs}">Zarządzaj klubami</a></li>
+            <li><a th:href="@{/admin-players}">Zarządzaj zawodnikami</a></li>
+            <li><a th:href="@{/admin-users}">Zarządzaj użytkownikami</a></li>
         </div>
     </nav>
 </section>
@@ -33,7 +33,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"/>
-    <script src="https://unpkg.com/vue"></script>
+    <script src="/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
 </section>
 
 <section layout:fragment="ext-footer-scripts">

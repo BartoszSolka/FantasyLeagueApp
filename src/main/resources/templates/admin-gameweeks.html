@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorator="admin-layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<section layout:fragment="content" id="app">
+    <div class="col-md-12">
+        <h2 class="text-center">Lista kolejek</h2>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <tr class="text-center">
+            <th>Id</th>
+            <th>Aktywna</th>
+            <th>Szczegóły</th>
+        </tr>
+        <tr v-for="gameweek in gameweeks">
+            <td>{{gameweek.id}}</td>
+            <td>{{gameweek.current ? 'Tak' : 'Nie'}}</td>
+            <td><a :href="gameweekIdLink(gameweek)">Szczegóły</a></td>
+        </tr>
+    </table>
+</section>
+
+<section layout:fragment="ext-footer-scripts">
+    <script src="/js/admin/admin-gameweek.js"></script>
+</section>
+</body>
+</html>
