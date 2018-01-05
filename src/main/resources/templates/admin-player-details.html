@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorator="admin-layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<section layout:fragment="content" id="app">
+    <div class="col-md-12" v-cloak="">
+        <h2 class="text-center">{{player.name + ' ' + (player.surname || '')}}</h2>
+    </div>
+
+    <div v-cloak="">
+        <div class="text-center">
+            <span>Klub:</span>
+            <span>{{player.club.name}}</span>
+            <br/>
+            <span>Pozycja:</span>
+            <span>{{player.position}}</span>
+            <br/>
+            <span>Cena:</span>
+            <span>{{player.price}} zł</span>
+            <br/>
+            <span>Numer koszulki:</span>
+            <span>{{player.shirtNumber}}</span>
+            <br/>
+            <span>Punkty:</span>
+            <span>{{player.points}}</span>
+        </div>
+    </div>
+</section>
+
+<section layout:fragment="ext-footer-scripts">
+    <script src="/js/admin/admin-player-details.js"></script>
+</section>
+</body>
+</html>

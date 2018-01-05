@@ -93,6 +93,7 @@ public class Bootstrap implements ApplicationRunner {
         match.setVisitor(club2);
 
         Gameweek gameweek = new Gameweek();
+        gameweek.setName("Kolejka 1");
         gameweek.setCurrent(true);
         gameweek.getMatches().add(match);
         gameweekRepository.save(gameweek);

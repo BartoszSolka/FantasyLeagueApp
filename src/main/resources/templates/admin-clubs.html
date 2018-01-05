@@ -7,22 +7,29 @@
 <section layout:fragment="content" id="app">
     <div class="col-md-12">
         <h2 class="text-center">Lista klubów</h2>
-        <a class="col-md-3 col-md-offset-9" href="/admin-add-club"><button class="btn btn-default">Dodaj klub</button></a>
+        <a class="col-md-3 col-md-offset-9" href="/admin-add-club">
+            <button class="btn btn-default">Dodaj klub</button>
+        </a>
     </div>
 
     <div class="col-md-12">
         <h2></h2>
     </div>
-    <table class="table table-bordered table-striped">
-        <tr class="text-center">
-            <th>Nazwa</th>
-            <th>Szczegóły</th>
-        </tr>
-        <tr v-for="club in clubs">
-            <td>{{club.name}}</td>
-            <td><a :href="clubIdLink(club)">Szczegóły</a></td>
-        </tr>
-    </table>
+
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table class="table table-bordered table-striped">
+            <tr class="text-center">
+                <th>Nazwa</th>
+                <th>Szczegóły</th>
+            </tr>
+            <tr v-for="club in clubs">
+                <td>{{club.name}}</td>
+                <td><a :href="clubIdLink(club)">Szczegóły</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-2"></div>
 </section>
 
 <section layout:fragment="ext-footer-scripts">

@@ -17,7 +17,7 @@ var adminPlayers = new Vue({
         },
 
         playerIdLink: function (player) {
-            return "/player/" + player.id;
+            return "/admin-player-details?id=" + player.id;
         },
     },
 

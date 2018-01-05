@@ -1,7 +1,6 @@
 package com.fantasy.controller;
 
 import com.fantasy.domain.User;
-import com.fantasy.dto.ClubDto;
 import com.fantasy.dto.LoginDto;
 import com.fantasy.enums.Role;
 import com.fantasy.service.UserService;
@@ -10,9 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
@@ -63,5 +59,10 @@ public class TemplateController {
     @GetMapping("/admin-add-club")
     public String adminAddClubs(Model model) {
         return "/admin-add-club";
+    }
+
+    @GetMapping("/admin-player-details")
+    public String adminPlayerDetails() {
+        return "/admin-player-details";
     }
 }

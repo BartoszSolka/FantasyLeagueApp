@@ -14,6 +14,9 @@ public class Gameweek {
     @GeneratedValue
     private Long id;
 
+    @Column(unique = true)
+    private String name;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Match> matches = new ArrayList<>();
 

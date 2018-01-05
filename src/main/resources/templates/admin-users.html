@@ -9,18 +9,22 @@
         <h2 class="text-center">Lista użytkowników</h2>
     </div>
 
-    <table class="table table-bordered table-striped">
-        <tr class="text-center">
-            <th>Imię</th>
-            <th>Czy Administrator</th>
-            <th>Punkty</th>
-        </tr>
-        <tr v-for="user in users">
-            <td>{{user.username}}</td>
-            <td>{{user.role == 'ADMIN' ? 'Tak' : 'Nie'}}</td>
-            <td>{{user.points}}</td>
-        </tr>
-    </table>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table class="table table-bordered table-striped">
+            <tr class="text-center">
+                <th>Imię</th>
+                <th>Czy Administrator</th>
+                <th>Punkty</th>
+            </tr>
+            <tr v-for="user in users">
+                <td>{{user.username}}</td>
+                <td>{{user.role == 'ADMIN' ? 'Tak' : 'Nie'}}</td>
+                <td>{{user.points}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-2"></div>
 </section>
 
 <section layout:fragment="ext-footer-scripts">

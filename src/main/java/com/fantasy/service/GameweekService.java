@@ -1,6 +1,10 @@
 package com.fantasy.service;
 
-import com.fantasy.domain.*;
+import com.fantasy.domain.Club;
+import com.fantasy.domain.Gameweek;
+import com.fantasy.domain.Match;
+import com.fantasy.domain.QGameweek;
+import com.fantasy.dto.CreateGameweekDto;
 import com.fantasy.dto.CreateMatchDto;
 import com.fantasy.repository.ClubRepository;
 import com.fantasy.repository.GameweekRepository;
@@ -13,8 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -34,10 +36,11 @@ public class GameweekService {
     }
 
     @Transactional
-    public Gameweek addGameweek(List<CreateMatchDto> matches) {
+    public Gameweek addGameweek(CreateGameweekDto createGameweekDto) {
         Gameweek gameweek = new Gameweek();
+        gameweek.setName(createGameweekDto.getName());
         List<Match> matchList = new ArrayList<>();
-        processMatchDto(matches, matchList);
+        processMatchDto(createGameweekDto.getMatches(), matchList);
 
         gameweek.getMatches().addAll(matchList);
         return gameweekRepository.save(gameweek);

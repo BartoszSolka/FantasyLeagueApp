@@ -2,6 +2,7 @@ package com.fantasy.controller;
 
 import com.fantasy.domain.Gameweek;
 import com.fantasy.domain.Match;
+import com.fantasy.dto.CreateGameweekDto;
 import com.fantasy.dto.CreateMatchDto;
 import com.fantasy.service.GameweekService;
 import lombok.RequiredArgsConstructor;
@@ -32,8 +33,8 @@ public class GameweekController {
     }
 
     @PostMapping
-    public Gameweek addGameweek(@RequestBody List<CreateMatchDto> matches) {
-        return gameweekService.addGameweek(matches);
+    public Gameweek addGameweek(@RequestBody CreateGameweekDto createGameweekDto) {
+        return gameweekService.addGameweek(createGameweekDto);
     }
 
     @PostMapping("/{id}")
