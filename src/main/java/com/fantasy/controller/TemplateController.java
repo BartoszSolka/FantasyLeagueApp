@@ -56,13 +56,38 @@ public class TemplateController {
         return "/admin-gameweek-details";
     }
 
-    @GetMapping("/admin-add-club")
-    public String adminAddClubs(Model model) {
-        return "/admin-add-club";
-    }
-
     @GetMapping("/admin-player-details")
     public String adminPlayerDetails() {
         return "/admin-player-details";
+    }
+
+    @GetMapping("/admin-match-details")
+    public String adminMatchDetails() {
+        return "/admin-match-details";
+    }
+    
+    @GetMapping("/admin-add-club")
+    public String adminAddClub() {
+        return "/admin-add-club";
+    }
+
+    @GetMapping("/admin-add-gameweek")
+    public String adminAddGameweek() {
+        return "/admin-add-gameweek";
+    }
+
+    @GetMapping("/admin-add-player")
+    public String adminAddPlayer() {
+        return "/admin-add-player";
+    }
+    
+    @GetMapping("/admin-add-match")
+    public String adminAddMatch() {
+        return "/admin-add-match";
+    }
+
+    @GetMapping("/admin-add-goal")
+    public String adminAddGoal() {
+        return "/admin-add-goal";
     }
 }

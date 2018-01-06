@@ -6,24 +6,20 @@
 <body>
 <section layout:fragment="content" id="app">
     <div class="col-md-12">
-        <h2 class="text-center">Lista kolejek</h2>
-        <a class="col-md-3 col-md-offset-9" href="/admin-add-gameweek">
-            <button class="btn btn-default">Dodaj kolejkę</button>
-        </a>
+        <h2 class="text-center">Szczególy meczu</h2>
+        <h3 class="text-center">{{match.home.name}} - {{match.visitor.name}}</h3>
     </div>
 
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <table class="table table-bordered table-striped">
             <tr class="text-center">
-                <th>#</th>
-                <th>Aktywna</th>
-                <th>Szczegóły</th>
+                <th>Gospodarze</th>
+                <th>Goście</th>
             </tr>
-            <tr v-for="gameweek in gameweeks">
-                <td>{{gameweek.name}}</td>
-                <td>{{gameweek.current ? 'Tak' : 'Nie'}}</td>
-                <td><a :href="gameweekIdLink(gameweek)">Szczegóły</a></td>
+            <tr v-for="n in (match.homeGoals.length > match.visitorGoals.length ? match.homeGoals.length : match.visitorGoals.length)">
+               <td>{{ getGoalDescription(match.homeGoals, n) }}</td>
+               <td>{{ getGoalDescription(match.visitorGoals, n) }}</td>
             </tr>
         </table>
     </div>
@@ -31,7 +27,7 @@
 </section>
 
 <section layout:fragment="ext-footer-scripts">
-    <script src="/js/admin/admin-gameweek.js"></script>
+    <script src="/js/admin/admin-match-details.js"></script>
 </section>
 </body>
 </html>

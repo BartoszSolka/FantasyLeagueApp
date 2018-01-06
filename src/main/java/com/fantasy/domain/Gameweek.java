@@ -1,6 +1,7 @@
 package com.fantasy.domain;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,7 +15,8 @@ public class Gameweek {
     @GeneratedValue
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
+    @NotBlank
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)

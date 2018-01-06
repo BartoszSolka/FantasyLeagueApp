@@ -1,5 +1,6 @@
 package com.fantasy.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -22,6 +23,7 @@ public class Goal {
     private Player assistedBy;
 
     @ManyToOne
+    @JsonIgnore
     private Match match;
 
     private Integer minuteOfGame;

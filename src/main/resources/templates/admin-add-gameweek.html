@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorator="admin-layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<section layout:fragment="content" id="app">
+    <div class="col-md-12">
+        <h2 class="text-center">Dodaj kolejkę</h2>
+        <h3 class="text-center">{{ message }}</h3>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Nazwa kolejki</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" placeholder="Nazwa kolejki" v-model="createGameweekDto.name"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default" v-on:click="submit">Dodaj kolejkę</button>
+    </div>
+</section>
+
+<section layout:fragment="ext-footer-scripts">
+    <script src="/js/admin/admin-add-gameweek.js"></script>
+</section>
+</body>
+</html>

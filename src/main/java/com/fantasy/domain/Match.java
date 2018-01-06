@@ -17,13 +17,13 @@ public class Match {
     @ManyToOne
     private Club home;
 
-    @OneToMany(mappedBy = "match")
+    @OneToMany
     private List<Goal> homeGoals = new ArrayList<>();
 
     @ManyToOne
     private Club visitor;
 
-    @OneToMany(mappedBy = "match")
+    @OneToMany
     private List<Goal> visitorGoals = new ArrayList<>();
 
     private boolean started;

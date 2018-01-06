@@ -26,6 +26,7 @@ public class GameweekService {
     private final GameweekRepository gameweekRepository;
     private final ClubRepository clubRepository;
     private final PlayerRepository playerRepository;
+    private final MatchService matchService;
 
     public Gameweek getGameweek(Long gameweekId) {
         return gameweekRepository.findOne(gameweekId);
@@ -39,10 +40,7 @@ public class GameweekService {
     public Gameweek addGameweek(CreateGameweekDto createGameweekDto) {
         Gameweek gameweek = new Gameweek();
         gameweek.setName(createGameweekDto.getName());
-        List<Match> matchList = new ArrayList<>();
-        processMatchDto(createGameweekDto.getMatches(), matchList);
 
-        gameweek.getMatches().addAll(matchList);
         return gameweekRepository.save(gameweek);
     }
 
@@ -78,6 +76,18 @@ public class GameweekService {
         gameweekRepository.save(gameweeks);
 
         playerRepository.resetPoints();
+        return gameweekRepository.save(gameweek);
+    }
+
+    public Gameweek addMatch(Long gameweekId, CreateMatchDto createMatchDto) {
+        Gameweek gameweek = gameweekRepository.findOne(gameweekId);
+        Match match = new Match();
+        Club home = clubRepository.findOne(createMatchDto.getHomeClubId());
+        Club visitor = clubRepository.findOne(createMatchDto.getVisitorClubId());
+        match.setHome(home);
+        match.setVisitor(visitor);
+
+        gameweek.getMatches().add(match);
         return gameweekRepository.save(gameweek);
     }
 }

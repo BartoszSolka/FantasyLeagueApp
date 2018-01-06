@@ -1,7 +1,9 @@
 package com.fantasy.service;
 
+import com.fantasy.domain.Club;
 import com.fantasy.domain.Player;
 import com.fantasy.dto.PlayerDto;
+import com.fantasy.repository.ClubRepository;
 import com.fantasy.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class PlayerService {
 
     private final PlayerRepository playerRepository;
+    private final ClubRepository clubRepository;
 
     private final static int goalPoints = 2;
     private final static int assistPoints = 1;
@@ -34,7 +37,8 @@ public class PlayerService {
         player.setSurname(playerDto.getSurname());
         player.setPhoto(playerDto.getPhoto());
         player.setPosition(playerDto.getPosition());
-        player.setClub(playerDto.getClub());
+        Club club = clubRepository.findOne(playerDto.getClubId());
+        player.setClub(club);
         player.setShirtNumber(playerDto.getShirtNumber());
         player.setPrice(playerDto.getPrice());
 
@@ -47,7 +51,8 @@ public class PlayerService {
         player.setSurname(playerDto.getSurname());
         player.setPhoto(playerDto.getPhoto());
         player.setPosition(playerDto.getPosition());
-        player.setClub(playerDto.getClub());
+        Club club = clubRepository.findOne(playerDto.getClubId());
+        player.setClub(club);
         player.setShirtNumber(playerDto.getShirtNumber());
         player.setPrice(playerDto.getPrice());
 

@@ -1,9 +1,10 @@
-var adminGameweekDetails = new Vue({
+var adminAddClub = new Vue({
     el: '#app',
     data: {
-        gameweek: {
-            matches: [],
+        clubDto: {
+            name: '',
         },
+        message: '',
     },
 
     computed: {
@@ -11,21 +12,18 @@ var adminGameweekDetails = new Vue({
     },
 
     methods: {
-        getMatches: function () {
-            console.log(getQueryVariable('id'));
-            return Vue.http.get('/gameweek/' + getQueryVariable('id'))
-                .then(function (response) {
-                    this.gameweek = response.body;
-                }.bind(this));
-        },
 
-        matchIdLink: function (match) {
-            return "/admin-match-details?id=" + match.id;
+        submit: function () {
+            return Vue.http.post('/club', this.clubDto)
+                .then(function (response) {
+                    this.message = 'Pomyślnie dodano klub - ' + this.clubDto.name;
+                    this.clubDto.name = null;
+                }.bind(this));
         },
     },
 
     mounted: function () {
-        this.getMatches();
+
     },
 
 })

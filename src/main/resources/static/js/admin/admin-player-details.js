@@ -25,6 +25,21 @@ var adminPlayerDetails = new Vue({
                     this.player = response.body;
                 }.bind(this));
         },
+
+        getPositionName: function (position) {
+            if ('GOALKEEPER' === position) {
+                return 'Bramkarz';
+            }
+            if ('DEFENDER' === position) {
+                return 'Obrońca';
+            }
+            if ('MIDFIELDER' === position) {
+                return 'Pomocnik';
+            }
+            if ('FORWARD' === position) {
+                return 'Napastnik';
+            }
+        }
     },
 
     mounted: function () {

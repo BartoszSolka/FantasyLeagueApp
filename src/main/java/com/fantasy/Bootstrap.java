@@ -10,6 +10,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -67,6 +68,7 @@ public class Bootstrap implements ApplicationRunner {
         generate();
     }
 
+    @Transactional
     private void generate() {
         User admin = new User();
         admin.setRole(Role.ADMIN);
@@ -103,7 +105,23 @@ public class Bootstrap implements ApplicationRunner {
         for (Player player : players) {
             player.setClub(club);
         }
-        playerRepository.save(players);
+        players = playerRepository.save(players);
+
+        Goal goal = new Goal();
+        goal.setMatch(match);
+        goal.setMinuteOfGame(30);
+        goal.setScoredBy(players.get(0));
+        goal.setAssistedBy(players.get(1));
+        goal = goalRepository.save(goal);
+        match.getHomeGoals().add(goal);
+
+        Goal goal2 = new Goal();
+        goal2.setMatch(match);
+        goal2.setMinuteOfGame(89);
+        goal2.setScoredBy(players.get(3));
+        goal2 = goalRepository.save(goal2);
+        match.getVisitorGoals().add(goal2);
+        matchRepository.save(match);
     }
 
     private List<Player> createPlayers() {
