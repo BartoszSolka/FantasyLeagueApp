@@ -39,7 +39,7 @@ public class Bootstrap implements ApplicationRunner {
             new Club("Real Madryt")
     );
 
-    private static List<Pair<String, String>> playersNames = Arrays.asList(
+    private static List<Pair<String, String>> manchesterCityPlayers = Arrays.asList(
             new Pair<>("Ederson", null),
             new Pair<>("Claudio", "Bravo"),
             new Pair<>("John", "Stones"),
@@ -61,6 +61,30 @@ public class Bootstrap implements ApplicationRunner {
             new Pair<>("Bernardo", "Silva"),
             new Pair<>("Sergio", "Agüero"),
             new Pair<>("Gabriel", "Jesus")
+    );
+
+    private static List<Pair<String, String>> liverpoolPlayers = Arrays.asList(
+            new Pair<>("Mohamed", "Salag"),
+            new Pair<>("Sadio", "Mane"),
+            new Pair<>("Virgil", "van Djik"),
+            new Pair<>("Alex", "Oxlade-Chamberlain"),
+            new Pair<>("Roberto", "Firmino"),
+            new Pair<>("Andrew", "Robertson"),
+            new Pair<>("Adam", "Lallana"),
+            new Pair<>("Daniel", "Sturridge"),
+            new Pair<>("Emre", "Can"),
+            new Pair<>("Jordan", "Henderson"),
+            new Pair<>("Alberto Moreno", "Perez"),
+            new Pair<>("Dominic", "Solanke"),
+            new Pair<>("Dejan", "Lovren"),
+            new Pair<>("Joe", "Gomez"),
+            new Pair<>("Simon", "Mignolet"),
+            new Pair<>("Joel", "Matip"),
+            new Pair<>("James", "Milner"),
+            new Pair<>("Georginio", "Wijnaldumm"),
+            new Pair<>("Loris", "Karius"),
+            new Pair<>("Nathaniel", "Clyne"),
+            new Pair<>("Danny", "Ings")
     );
 
     @Override
@@ -101,9 +125,16 @@ public class Bootstrap implements ApplicationRunner {
         gameweekRepository.save(gameweek);
 
         List<Player> players = new ArrayList<>();
-        players.addAll(createPlayers());
+        players.addAll(createPlayers(manchesterCityPlayers));
         for (Player player : players) {
             player.setClub(club);
+        }
+        players = playerRepository.save(players);
+
+        players.clear();
+        players.addAll(createPlayers(liverpoolPlayers));
+        for (Player player : players) {
+            player.setClub(club2);
         }
         players = playerRepository.save(players);
 
@@ -124,12 +155,12 @@ public class Bootstrap implements ApplicationRunner {
         matchRepository.save(match);
     }
 
-    private List<Player> createPlayers() {
+    private List<Player> createPlayers(List<Pair<String, String>> names) {
         List<Player> ret = new ArrayList<>();
-        playersNames.forEach(player -> {
+        names.forEach(name -> {
             Player player1 = new Player();
-            player1.setName(player.getKey());
-            player1.setSurname(player.getValue());
+            player1.setName(name.getKey());
+            player1.setSurname(name.getValue());
             player1.setPosition(randomPosition());
             player1.setPrice(new Random().nextInt(1000000));
             player1.setShirtNumber(new Random().nextInt(99));

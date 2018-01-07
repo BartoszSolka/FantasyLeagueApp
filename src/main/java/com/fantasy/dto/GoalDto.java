@@ -1,6 +1,5 @@
 package com.fantasy.dto;
 
-import com.fantasy.domain.Player;
 import com.fantasy.enums.MatchSide;
 import lombok.Data;
 
@@ -10,9 +9,9 @@ import javax.validation.constraints.NotNull;
 public class GoalDto {
 
     @NotNull
-    private Player scoredBy;
+    private Long scoredBy;
 
-    private Player assistedBy;
+    private Long assistedBy;
 
     @NotNull
     private Long matchId;

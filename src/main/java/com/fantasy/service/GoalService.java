@@ -2,6 +2,7 @@ package com.fantasy.service;
 
 import com.fantasy.domain.Goal;
 import com.fantasy.domain.Match;
+import com.fantasy.domain.Player;
 import com.fantasy.dto.GoalDto;
 import com.fantasy.enums.MatchSide;
 import com.fantasy.repository.GoalRepository;
@@ -32,8 +33,13 @@ public class GoalService {
     public Goal addGoal(GoalDto goalDto) {
         Goal goal = new Goal();
         Match match = matchRepository.findOne(goalDto.getMatchId());
-        goal.setScoredBy(goalDto.getScoredBy());
-        goal.setAssistedBy(goalDto.getAssistedBy());
+        Player scorer = playerService.getPlayer(goalDto.getScoredBy());
+        Player assistedBy = null;
+        if (goalDto.getAssistedBy() != null) {
+            assistedBy = playerService.getPlayer(goalDto.getAssistedBy());
+        }
+        goal.setScoredBy(scorer);
+        goal.setAssistedBy(assistedBy);
         goal.setMatch(match);
         goal.setMinuteOfGame(goalDto.getMinuteOfGame());
 
@@ -57,8 +63,13 @@ public class GoalService {
     @Transactional
     public Goal editGoal(Goal goal, GoalDto goalDto) {
         Match match = matchRepository.findOne(goalDto.getMatchId());
-        goal.setScoredBy(goalDto.getScoredBy());
-        goal.setAssistedBy(goalDto.getAssistedBy());
+        Player scorer = playerService.getPlayer(goalDto.getScoredBy());
+        Player assistedBy = null;
+        if (goalDto.getAssistedBy() != null) {
+            assistedBy = playerService.getPlayer(goalDto.getAssistedBy());
+        }
+        goal.setScoredBy(scorer);
+        goal.setAssistedBy(assistedBy);
         goal.setMatch(match);
         goal.setMinuteOfGame(goalDto.getMinuteOfGame());
         return goalRepository.save(goal);

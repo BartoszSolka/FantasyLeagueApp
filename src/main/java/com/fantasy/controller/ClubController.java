@@ -1,14 +1,16 @@
 package com.fantasy.controller;
 
+import com.fantasy.domain.Club;
 import com.fantasy.domain.Player;
 import com.fantasy.dto.ClubDto;
-import com.fantasy.domain.Club;
 import com.fantasy.service.ClubService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/club")
@@ -25,6 +27,11 @@ public class ClubController {
     @GetMapping("/{id}")
     public Club getClub(@PathVariable("id") Long clubId) {
         return clubService.getClub(clubId);
+    }
+
+    @GetMapping("/{id}/players")
+    public List<Player> getPlayersFromClub(@PathVariable("id")Long clubId) {
+        return clubService.getPlayersFromClub(clubId);
     }
 
     @PostMapping

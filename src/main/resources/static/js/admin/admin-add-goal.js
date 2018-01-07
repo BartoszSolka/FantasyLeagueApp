@@ -1,29 +1,52 @@
-var adminAddGameweek = new Vue({
+var adminAddGoal = new Vue({
     el: '#app',
     data: {
-        createGameweekDto: {
-            name: '',
+        goalDto: {
+            matchId: getQueryVariable('id'),
         },
         message: '',
-    },
-
-    computed: {
-
+        match: {
+            home: {},
+            visitor: {},
+        },
+        players: [],
     },
 
     methods: {
 
         submit: function () {
-            return Vue.http.post('/gameweek', this.createGameweekDto)
+            return Vue.http.post('/goal', this.goalDto)
                 .then(function (response) {
-                    this.message = 'Pomyślnie dodano kolejkę - ' + this.createGameweekDto.name;
-                    this.createGameweekDto.name = null;
+                    this.message = 'Pomyślnie dodano bramkę';
+                }.bind(this));
+        },
+
+        getMatch: function () {
+            return Vue.http.get('/match/' + getQueryVariable('id'))
+                .then(function (response) {
+                    this.match = response.body;
+                }.bind(this));
+        },
+
+        getPlayers: function () {
+            var clubId;
+            if (!this.goalDto.matchSide) return [];
+            if (this.goalDto.matchSide === 'HOME') {
+                clubId = this.match.home.id;
+            }
+            if (this.goalDto.matchSide === 'VISITOR') {
+                clubId = this.match.visitor.id;
+            }
+            return Vue.http.get('/club/' + clubId + '/players')
+                .then(function (response) {
+                    console.log(response.body);
+                    this.players = response.body;
                 }.bind(this));
         },
     },
 
     mounted: function () {
-
+        this.getMatch();
     },
 
 })

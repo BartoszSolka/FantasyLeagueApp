@@ -8,6 +8,9 @@
     <div class="col-md-12">
         <h2 class="text-center">Szczególy meczu</h2>
         <h3 class="text-center">{{match.home.name}} - {{match.visitor.name}}</h3>
+        <a class="col-md-3 col-md-offset-9" :href="'/admin-add-goal?id=' + match.id">
+            <button class="btn btn-default">Dodaj bramkę</button>
+        </a>
     </div>
 
     <div class="col-md-2"></div>

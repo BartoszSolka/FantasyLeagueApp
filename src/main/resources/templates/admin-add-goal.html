@@ -12,27 +12,42 @@
 
     <div class="form-horizontal">
         <div class="form-group">
-            <label for="home" class="col-sm-2 control-label">Gospodarze</label>
+            <label for="matchSide" class="col-sm-2 control-label">Bramka dla</label>
             <div class="col-sm-10">
-                <select class="form-control" id="home" v-model="createMatchDto.homeClubId">
-                    <option v-for="club in clubs" :value="club.id">{{ club.name}}</option>
+                <select class="form-control" id="matchSide" v-model="goalDto.matchSide" v-on:change="getPlayers()">
+                    <option value="HOME">{{ match.home.name }}</option>
+                    <option value="VISITOR">{{ match.visitor.name }}</option>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <label for="visitor" class="col-sm-2 control-label">Goście</label>
+            <label for="scorer" class="col-sm-2 control-label">Strzelec</label>
             <div class="col-sm-10">
-                <select class="form-control" id="visitor" v-model="createMatchDto.visitorClubId">
-                    <option v-for="club in clubs" :value="club.id">{{ club.name }}</option>
+                <select class="form-control" id="scorer" v-model="goalDto.scoredBy">
+                    <option v-for="player in players" :value="player.id">{{ (player.name + ' ' || '') + (player.surname || '') }}</option>
                 </select>
             </div>
         </div>
-        <button type="submit" class="btn btn-default" v-on:click="submit">Dodaj mecz</button>
+        <div class="form-group">
+            <label for="asisted" class="col-sm-2 control-label">Asysta</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="asisted" v-model="goalDto.assistedBy">
+                    <option v-for="player in players" :value="player.id">{{ (player.name + ' ' || '') + (player.surname || '') }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="minute" class="col-sm-2 control-label">Minuta</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="minute" placeholder="Minuta" v-model="goalDto.minuteOfGame"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default" v-on:click="submit">Dodaj bramkę</button>
     </div>
 </section>
 
 <section layout:fragment="ext-footer-scripts">
-    <script src="/js/admin/admin-add-match.js"></script>
+    <script src="/js/admin/admin-add-goal.js"></script>
 </section>
 </body>
 </html>

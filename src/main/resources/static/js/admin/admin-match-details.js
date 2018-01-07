@@ -26,7 +26,7 @@ var adminMatchDetails = new Vue({
         },
 
         getGoalDescription: function (goals, n) {
-            if (goals.length >= n - 1) {
+            if (goals.length >= n) {
                 var goal = goals[n - 1];
                 return goal.minuteOfGame + '\'' + ' ' + this.getPlayerName(goal.scoredBy) + (goal.assistedBy ? (' (' + this.getPlayerName(goal.assistedBy) + ')') : '');
             } else {
