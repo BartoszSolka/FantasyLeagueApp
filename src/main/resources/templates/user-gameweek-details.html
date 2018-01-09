@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorator="user-layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<section layout:fragment="content" id="app">
+    <div class="col-md-12">
+        <h2 class="text-center">Szczególy kolejki</h2>
+        <h3 class="text-center">{{gameweek.name}}</h3>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <div class="col-md-12 text-center" v-for="match in gameweek.matches">
+            <a :href="matchIdLink(match)">
+                <span>{{match.home.name}}</span>
+                <span v-if="!match.started">{{match.homeGoals.length || ''}} - {{match.visitorGoals.length || ''}}</span>
+                <span v-if="match.started">{{match.homeGoals.length}} - {{match.visitorGoals.length}}</span>
+                <span>{{match.visitor.name}}</span>
+            </a>
+        </div>
+    </table>
+</section>
+
+<section layout:fragment="ext-footer-scripts">
+    <script src="/js/user/user-gameweek-details.js"></script>
+</section>
+</body>
+</html>

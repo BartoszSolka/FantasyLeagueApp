@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorator="user-layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<section layout:fragment="content" id="app">
+    <div class="col-md-12">
+        <h2 class="text-center">Szczególy meczu</h2>
+        <h3 class="text-center">{{match.home.name}} - {{match.visitor.name}}</h3>
+    </div>
+
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table class="table table-bordered table-striped">
+            <tr class="text-center">
+                <th>Gospodarze</th>
+                <th>Goście</th>
+            </tr>
+            <tr v-for="n in (match.homeGoals.length > match.visitorGoals.length ? match.homeGoals.length : match.visitorGoals.length)">
+                <td>{{ getGoalDescription(match.homeGoals, n) }}</td>
+                <td>{{ getGoalDescription(match.visitorGoals, n) }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-2"></div>
+</section>
+
+<section layout:fragment="ext-footer-scripts">
+    <script src="/js/user/user-match-details.js"></script>
+</section>
+</body>
+</html>

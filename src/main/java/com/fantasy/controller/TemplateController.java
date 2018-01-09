@@ -28,7 +28,7 @@ public class TemplateController {
         if (Role.ADMIN.equals(user.getRole())) {
             return "/admin-players";
         }
-        return "/index";
+        return "/user-players";
     }
 
     @GetMapping("/admin-players")
@@ -89,5 +89,35 @@ public class TemplateController {
     @GetMapping("/admin-add-goal")
     public String adminAddGoal() {
         return "/admin-add-goal";
+    }
+
+    @GetMapping("/user-players")
+    public String userPlayers() {
+        return "/user-players";
+    }
+
+    @GetMapping("/user-clubs")
+    public String userClubs() {
+        return "/user-clubs";
+    }
+
+    @GetMapping("/user-gameweeks")
+    public String userGameweeks() {
+        return "/user-gameweeks";
+    }
+
+    @GetMapping("/user-gameweek-details")
+    public String userGameweekDetails(@RequestParam("id")Long id) {
+        return "/user-gameweek-details";
+    }
+
+    @GetMapping("/user-player-details")
+    public String userPlayerDetails() {
+        return "/user-player-details";
+    }
+
+    @GetMapping("/user-match-details")
+    public String userMatchDetails() {
+        return "/user-match-details";
     }
 }
