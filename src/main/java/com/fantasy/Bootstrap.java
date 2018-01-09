@@ -64,7 +64,7 @@ public class Bootstrap implements ApplicationRunner {
     );
 
     private static List<Pair<String, String>> liverpoolPlayers = Arrays.asList(
-            new Pair<>("Mohamed", "Salag"),
+            new Pair<>("Mohamed", "Salah"),
             new Pair<>("Sadio", "Mane"),
             new Pair<>("Virgil", "van Djik"),
             new Pair<>("Alex", "Oxlade-Chamberlain"),
